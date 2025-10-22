@@ -44,6 +44,10 @@ function addQuote() {
   quotes.push(newQuote);
   saveQuotes();
   populateCategories();
+
+  // Post to mock API
+  postQuoteToServer(newQuote);
+
   alert("Quote added!");
 }
 
@@ -69,7 +73,7 @@ function filterQuotes() {
   showRandomQuote();
 }
 
-// --- NEW: Fetch quotes from mock API ---
+// --- Fetch quotes from server (GET) ---
 async function fetchQuotesFromServer() {
   try {
     const response = await fetch("https://jsonplaceholder.typicode.com/posts");
@@ -99,6 +103,27 @@ async function fetchQuotesFromServer() {
     }
   } catch (error) {
     console.error("Error fetching quotes:", error);
+  }
+}
+
+// --- ✅ POST new quotes to server ---
+async function postQuoteToServer(quote) {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(quote),
+    });
+
+    if (response.ok) {
+      console.log("Quote posted successfully!");
+    } else {
+      console.error("Failed to post quote.");
+    }
+  } catch (error) {
+    console.error("Error posting quote:", error);
   }
 }
 
