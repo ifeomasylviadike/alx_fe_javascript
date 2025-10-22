@@ -9,7 +9,7 @@ const defaultQuotes = [
   { text: "The best way to predict the future is to create it.", category: "Motivation" },
   { text: "In the middle of every difficulty lies opportunity.", category: "Inspiration" },
   { text: "Happiness depends upon ourselves.", category: "Happiness" },
-  { text: "Code is like humor. When you have to explain it, it’s bad.", category: "Programming" },
+  { text: "Code is like humour. When you have to explain it, it’s bad.", category: "Programming" },
 ];
 
 // --- App state ---
